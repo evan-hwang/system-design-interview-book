@@ -1,4 +1,4 @@
-![image-20211109173707028](/Users/addpage/Library/Application Support/typora-user-images/image-20211109173707028.png)
+![image-20211109173707028](./images/image-20211109173707028.png)
 
 # Rate Limtter(처리율 제한 장치)
 
@@ -6,7 +6,7 @@
 
 
 
-![image-20211109173756332](/Users/addpage/Library/Application Support/typora-user-images/image-20211109173756332.png)
+![image-20211109173756332](./images/image-20211109173756332.png)
 
 
 
@@ -65,7 +65,7 @@ HTTP로 예를 들면 이 장치는 특정 기간 내에 전송되는 클라이�
 
 **처리율 제한 장치는 어디에 둘것인가 ?**
 
-![img](https://miro.medium.com/max/2100/1*JQXK30B3gxgYAQL-KVTy5A.png)
+![img](./images/1*JQXK30B3gxgYAQL-KVTy5A.png)
 
 1. 클라이언트에 두기
 
@@ -109,7 +109,7 @@ HTTP로 예를 들면 이 장치는 특정 기간 내에 전송되는 클라이�
 
 
 
-![Part 2: Rate Limiting for API gateways | by Daniel Bryant | Ambassador Labs](https://miro.medium.com/max/1400/0*7MkJtV0bgq6dDQtg.)
+![Part 2: Rate Limiting for API gateways | by Daniel Bryant | Ambassador Labs](./images/0*7MkJtV0bgq6dDQtg..png)
 
 **동작 원리**
 
@@ -159,7 +159,7 @@ HTTP로 예를 들면 이 장치는 특정 기간 내에 전송되는 클라이�
 
 ### 상세 설계
 
-![Designing a Distributed Rate Limiter — Deep Dive | by Hiresh Trivedi |  wineofbits | Medium](https://miro.medium.com/max/1400/1*Bcdcls-gRI3jKBy8HdtJbQ.jpeg)
+![Designing a Distributed Rate Limiter — Deep Dive | by Hiresh Trivedi |  wineofbits | Medium](./images/1*Bcdcls-gRI3jKBy8HdtJbQ.png)
 
 1. 처리율 제한 규칙은 디스크에 보관한다.
 2. 작업 프로세스는 수시로 규칙을 디스크에서 읽어 캐시에 저장한다.

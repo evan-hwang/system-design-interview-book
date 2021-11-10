@@ -8,7 +8,7 @@
 
 네트워크로의 데이터 주입 속도의 상한을 정해 제어하고 네트워크에서 트래픽 체증을 일정하게 유지한다. 일정한 유출 속도(유출 속도는 고정된 값)를 제한하여 버스트 유입 속도를 부드럽게 한다.
 
-[![Leaky Bucket](https://www.mimul.com/static/53e202f8b985d2acb8fd7081248688ce/fd7a0/rate_leakybucket.png)](https://www.mimul.com/static/53e202f8b985d2acb8fd7081248688ce/fd7a0/rate_leakybucket.png)
+![Leaky Bucket](./images/rate_leakybucket.png)
 
 - 고정 용량의 버킷에 다양한 유량의 물이 들어오면 버킷에 담기고 그 담긴물은 일정량 비율로 떨어진다.
 - 들어오는 물의 양이 많아 버킷의 용량을 초과하게 되면 그 물은 버린다.
@@ -90,7 +90,7 @@ public class LeakyBucket extends RateLimiter {
 
 일시적으로 많은 트래픽이 와도 토큰이 있다면 처리가 가능하면서 토큰 손실 처리를 통해 평균 처리 속도를 제한할 수 있다. 즉, **평균 유입 속도를 제한**하고 처리 패킷 손실없이 특정 수준의 버스트 요청 허용할 수 있다.
 
-[![Token Bucket](https://www.mimul.com/static/34b0a436c691568360a9e46dc7baca1d/cbf7c/rate_tokenbucket.png)](https://www.mimul.com/static/34b0a436c691568360a9e46dc7baca1d/cbf7c/rate_tokenbucket.png)
+![Token Bucket](./images/rate_tokenbucket.png)
 
 - 토큰은 정해진 비율로 토큰 버킷에 넣는다.
 - 버킷은 최대 n개의 토큰을 저장하며, 버킷이 가득차면 새로 추가된 토큰은 삭제되거나 거부된다.
@@ -168,7 +168,7 @@ public class TokenBucket extends RateLimiter {
 
 정해진 시간 단위로 window가 만들어지고 요청 건수가 기록되어 해당 window의 요청 건수가 정해진 건수보다 크면 해당 요청은 처리가 거부된다. 이 알고리즘을 사용하면 경계의 시간대(12:59, 13:01초에 몰리면)에 요청이 오면 두배의 부하를 받게 된다. 즉, 구현은 쉽지만, 기간 경계의 트래픽 편향 문제가 발생된다.
 
-[![Fixed Window Counter](https://www.mimul.com/static/fc309200b26de4d6322f48fd3719518a/34e8a/rate_fixed_window_counter.png)](https://www.mimul.com/static/fc309200b26de4d6322f48fd3719518a/34e8a/rate_fixed_window_counter.png)
+![Fixed Window Counter](./images/rate_fixed_window_counter.png)
 
 - 버킷은 타임라인에 따라 고정된 window로 나누고, 각 window 마다 카운터를 붙인다.
 - 요청이 접수될 때마다 이 카운터의 값이 1씩 증가한다.
@@ -227,7 +227,7 @@ public class FixedWindowCounter extends RateLimiter {
 
 Fixed window counter의 단점인 기간 경계의 편향에 대응하기 위한 알고리즘이다. 타임스탬프 데이터는 보통 레디스의 정렬 집합(sorted set)과 같은 캐시에 보관한다.
 
-[![Sliding Window Log](https://www.mimul.com/static/75653188f6e1eb96a9e9bf861f538f6e/a49a1/rate_sliding-window-log.png)](https://www.mimul.com/static/75653188f6e1eb96a9e9bf861f538f6e/a49a1/rate_sliding-window-log.png)
+![Sliding Window Log](./images/rate_sliding-window-log.png)
 
 - 한도가 2개이다를 가정
 - 요청이 12초에 도착했을 때
@@ -297,7 +297,7 @@ public class SlidingWindowLog extends RateLimiter {
 
 Fixed window counter의 경계 문제와 Sliding window log의 로그 보관 비용 등의 문제점을 보완할 수 있는 알고리즘이다.
 
-[![Sliding Window Counter](https://www.mimul.com/static/1823b61524cd87ef9438cdca3d395a92/e681d/rate_sliding-window.png)](https://www.mimul.com/static/1823b61524cd87ef9438cdca3d395a92/e681d/rate_sliding-window.png)
+![Sliding Window Counter](./images/rate_sliding-window.png)
 
 - rate limter이 처리 한도는 분당 10개이다.
 - 이전 1분 동안 9건의 요청이 왔고, 현재 1분 동안 5건의 요청이 왔다고 가정하자.
